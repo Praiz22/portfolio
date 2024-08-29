@@ -835,6 +835,12 @@ body.light-mode .testimonials {
     transform: rotate(-360deg);
   }
 }
+#theme-toggle-2 #icon-2 {
+  font-size: 30px;
+}
+.theme-toggle-icon {
+  font-size: 30px;
+}
 
 .animated-icon {
   display: inline-block;
