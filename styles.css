@@ -603,7 +603,7 @@ footer {
 
 .testimonials .carousel {
   margin: 0 auto;
-  width: 80%;
+  width: 70%;
 }
 
 .testimonials .carousel-inner {
@@ -626,7 +626,7 @@ footer {
 }
 
 .testimonials .testimonial img {
-  width: 50px; /* Reduced image size for mobile devices */
+  width: 50px;
   height: 50px;
   border-radius: 10%;
   margin-bottom: 20px;
@@ -634,7 +634,7 @@ footer {
 
 .testimonials .carousel-control-prev,
 .testimonials .carousel-control-next {
-  width: 30px; /* Reduced control size for mobile devices */
+  width: 30px; 
   height: 30px;
   background-color: grey;
   border-radius: 50%;
@@ -656,7 +656,7 @@ footer {
     padding: 20px 0;
   }
   .testimonials .carousel {
-    width: 80%;
+    width: 60%;
   }
   .testimonials .testimonial {
     padding: 10px;
