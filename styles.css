@@ -598,12 +598,12 @@ footer {
 
 .testimonials {
   background-color: var(--background-color);
-  padding: 80px 0;
+  padding: 40px 0; /* Reduced padding for mobile devices */
 }
 
 .testimonials .carousel {
   margin: 0 auto;
-  width: 120%;
+  width: 90%;
 }
 
 .testimonials .carousel-inner {
@@ -626,21 +626,21 @@ footer {
 }
 
 .testimonials .testimonial img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+  width: 50px; /* Reduced image size for mobile devices */
+  height: 50px;
+  border-radius: 10%;
   margin-bottom: 20px;
 }
 
 .testimonials .carousel-control-prev,
 .testimonials .carousel-control-next {
-  width: 40px;
-  height: 40px;
+  width: 30px; /* Reduced control size for mobile devices */
+  height: 30px;
   background-color: grey;
   border-radius: 50%;
   color: #fff;
-  font-size: 24px;
-  line-height: 40px;
+  font-size: 18px;
+  line-height: 30px;
   text-align: center;
   cursor: pointer;
 }
@@ -650,6 +650,22 @@ footer {
   background-color: grey;
 }
 
+/* Add media queries to target mobile devices */
+@media (max-width: 768px) {
+  .testimonials {
+    padding: 20px 0;
+  }
+  .testimonials .carousel {
+    width: 80%;
+  }
+  .testimonials .testimonial {
+    padding: 10px;
+  }
+  .testimonials .testimonial img {
+    width: 30px;
+    height: 30px;
+  }
+}
 
 body.dark-mode .testimonials {
   --background-color: #0e0600;
@@ -664,7 +680,6 @@ body.light-mode .testimonials {
   --accent-color: #0e0600;
   --accent-color-hover: #0e0600;
 }
-
 /*light box modal i saw on tiktok */
 
 .project-image-container {
