@@ -848,6 +848,9 @@ body.light-mode .testimonials {
   fill: #333;
   /* Icon color */
 }
+.fa-sun, .fa-moon {
+  font-size: 30px;
+}
 
 .animated-icon svg path,
 .animated-icon .service-icon {
