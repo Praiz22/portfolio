@@ -1,171 +1,219 @@
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-  event.preventDefault();
-  var form = event.target;
-  var formData = new FormData(form);
-  var xhr = new XMLHttpRequest();
-  xhr.open(form.method, form.action);
-  xhr.setRequestHeader('Accept', 'application/json');
-  xhr.onreadystatechange = function() {
-      if (xhr.readyState !== XMLHttpRequest.DONE) return;
-      if (xhr.status === 200) {
-          form.reset();
-          document.getElementById('response-message').style.display = 'block';
-      } else {
-          alert('There was an issue submitting the form. Please try again.');
-      }
-  };
-  xhr.send(formData);
-});
-
-
-
-$(document).ready(function () {
-  $('.carousel').carousel({
-    interval: 5000
-  });
-});
-
-$(document).ready(function () {
-  $('.carousel').carousel({
-    interval: 5000
-  });
-});
-
-
-const typingText = document.getElementById('typing-text');
-const phrases = [
-  "I'm a Web Designer",
-  'Software Developer',
-  'Graphics Designer',
-  'UI/UX Product Designer',
-  'Music lover, Tech and Science Enthusiast'
-];
-
-let currentPhraseIndex = 0;
-let currentCharIndex = 0;
-let darkMode = false; // Set initial mode based on your actual toggle
-
-function typePhrase() {
-  const phrase = phrases[currentPhraseIndex];
-  typingText.textContent += phrase[currentCharIndex];
-  currentCharIndex++;
-  updateTextColor(); // Ensure text color is updated
-  if (currentCharIndex < phrase.length) {
-    setTimeout(typePhrase, 50);
-  } else {
-    setTimeout(erasePhrase, 1000);
-  }
-}
-
-function erasePhrase() {
-  typingText.textContent = typingText.textContent.slice(0, -1);
-  currentCharIndex--;
-  updateTextColor(); // Ensure text color is updated
-  if (currentCharIndex > 0) {
-    setTimeout(erasePhrase, 50);
-  } else {
-    currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
-    setTimeout(typePhrase, 1000);
-  }
-}
-
-function updateTextColor() {
-  if (darkMode) {
-    typingText.style.color = 'white';
-  } else {
-    typingText.style.color = 'black';
-  }
-}
-
-// Start typing effect when the page loads
+// Initialize AOS (Animate On Scroll) library
 document.addEventListener('DOMContentLoaded', () => {
-  typePhrase();
+    AOS.init({
+        duration: 1000,     // animation duration
+        once: true,         // whether animation should happen only once - while scrolling down
+        offset: 100,        // offset (in px) from the top of the screen to trigger animations
+        easing: 'ease-in-out', // easing for animations
+    });
+
+    // Manually trigger AOS refresh if content loads dynamically
+    window.addEventListener('load', AOS.refreshHard);
 });
 
-// Toggle dark mode function
-function toggleDarkMode() {
-  darkMode = !darkMode;
-  updateTextColor(); // Update text color based on the new mode
-}
+// Typing Effect for Hero Section
+const typingTextElement = document.getElementById('typing-text');
+const texts = ["Web Developer", "UI/UX Designer", "Graphics Designer", "Problem Solver"];
+let textIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+let typingSpeed = 150; // Milliseconds per character
+let deletingSpeed = 75; // Milliseconds per character
+let delayBeforeNextText = 1500; // Delay before typing next text or deleting
 
-// Example dark mode toggle button
-const toggleButton2 = document.getElementById('theme-toggle-2');
-const icon2 = document.getElementById('icon-2');
-
-toggleButton2.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode'); // Toggle class for dark mode
-
-  if (document.body.classList.contains('dark-mode')) {
-    icon2.classList.remove('fa-sun');
-    icon2.classList.add('fa-moon');
-    darkMode = true;
-  } else {
-    icon2.classList.remove('fa-moon');
-    icon2.classList.add('fa-sun');
-    darkMode = false;
-  }
-  updateTextColor(); // Update text color after toggling dark mode
-});
-
-
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  const meters = document.querySelectorAll('.fill');
-
-  meters.forEach(meter => {
-    const percent = meter.getAttribute('data-percent');
-    meter.style.setProperty('--percent', percent + '%');
-    meter.style.animationDuration = `${percent * 0.1 + 4}s`; /* Slower animation */
-  });
-});
-
-
-
-
-
-
-function animateCounter(element, endValue) {
-  let currentValue = 0;
-  let interval;
-  let paused = false;
-
-  function animate() {
-    interval = setInterval(() => {
-      if (!paused) {
-        currentValue++;
-        element.textContent = currentValue;
-        if (currentValue >= endValue) {
-          paused = true;
-          setTimeout(() => {
-            paused = false;
-            currentValue = 0;
-          }, 3000);
+function typeWriter() {
+    const currentText = texts[textIndex];
+    if (isDeleting) {
+        // Deleting text
+        typingTextElement.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+            typingSpeed = 150; // Reset typing speed
+            setTimeout(typeWriter, delayBeforeNextText);
+        } else {
+            setTimeout(typeWriter, deletingSpeed);
         }
-      }
-    }, 70);
-  }
-
-  animate();
+    } else {
+        // Typing text
+        typingTextElement.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === currentText.length) {
+            isDeleting = true;
+            typingSpeed = delayBeforeNextText; // Pause before deleting
+            setTimeout(typeWriter, delayBeforeNextText);
+        } else {
+            setTimeout(typeWriter, typingSpeed);
+        }
+    }
 }
 
-animateCounter(document.getElementById("years-of-experience"), 4);
-animateCounter(document.getElementById("projects-completed"), 30);
-animateCounter(document.getElementById("industries-covered"), 15);
+// Start the typing effect when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', typeWriter);
+
+// Skill Meter Animation (on scroll into view)
+const skillFills = document.querySelectorAll('.skill .fill');
+
+const animateSkillMeters = () => {
+    skillFills.forEach(fill => {
+        const rect = fill.getBoundingClientRect();
+        const isInView = (rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight));
+
+        if (isInView && !fill.dataset.animated) {
+            const percent = fill.dataset.percent;
+            fill.style.width = percent + '%';
+            fill.dataset.animated = 'true'; // Mark as animated
+        }
+    });
+};
+
+// Initial check and attach to scroll event
+window.addEventListener('scroll', animateSkillMeters);
+document.addEventListener('DOMContentLoaded', animateSkillMeters); // Check on load
+
+// Counter Animation for About Me Section
+const yearsOfExperience = document.getElementById('years-of-experience');
+const projectsCompleted = document.getElementById('projects-completed');
+const industriesCovered = document.getElementById('industries-covered');
+
+function animateCountUp(element, target, duration = 2000) {
+    let start = 0;
+    const increment = target / (duration / 10); // Calculate increment for 10ms intervals
+
+    const updateCounter = () => {
+        start += increment;
+        if (start < target) {
+            element.textContent = Math.ceil(start);
+            requestAnimationFrame(updateCounter);
+        } else {
+            element.textContent = target;
+        }
+    };
+
+    // Use Intersection Observer to trigger animation when element is in view
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                requestAnimationFrame(updateCounter);
+                observer.unobserve(entry.target); // Stop observing once animated
+            }
+        });
+    }, { threshold: 0.5 }); // Trigger when 50% of element is visible
+
+    observer.observe(element);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    animateCountUp(yearsOfExperience, 5); // Example target for years of experience
+    animateCountUp(projectsCompleted, 20); // Example target for projects
+    animateCountUp(industriesCovered, 7); // Example target for industries
+});
 
 
-const toggleButton = document.getElementById('theme-toggle');
-const icon = document.getElementById('icon');
+// Light/Dark Mode Toggle
+const themeToggleButton = document.getElementById('theme-toggle');
+const themeIcon = document.getElementById('theme-icon');
 
-toggleButton.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
+// Function to set theme
+function setTheme(theme) {
+    if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        document.body.classList.remove('dark-mode');
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+        localStorage.setItem('theme', 'light');
+    }
+}
 
-  if (document.body.classList.contains('dark-mode')) {
-    icon.classList.remove('fa-sun');
-    icon.classList.add('fa-moon');
-  } else {
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
-  }
+// Check for saved theme preference or system preference
+document.addEventListener('DOMContentLoaded', () => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        setTheme(savedTheme);
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        setTheme('dark');
+    } else {
+        setTheme('light');
+    }
+});
+
+// Toggle theme on button click
+themeToggleButton.addEventListener('click', () => {
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+        setTheme('light');
+    } else {
+        setTheme('dark');
+    }
+});
+
+// Form Submission with FormSubmit
+const contactForm = document.getElementById('contact-form');
+const responseMessageBox = document.getElementById('response-message-box');
+const responseMessageText = document.getElementById('response-message-text');
+
+contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Prevent default form submission
+
+    const formData = new FormData(contactForm);
+    const formAction = contactForm.getAttribute('action');
+
+    try {
+        const response = await fetch(formAction, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            responseMessageText.textContent = "Thank You! Your message has been successfully sent. I will get back to you shortly.";
+            contactForm.reset(); // Clear the form
+        } else {
+            const data = await response.json();
+            if (data.message) {
+                responseMessageText.textContent = `Error: ${data.message}`;
+            } else {
+                responseMessageText.textContent = "Oops! There was an error sending your message. Please try again.";
+            }
+        }
+    } catch (error) {
+        console.error('Submission error:', error);
+        responseMessageText.textContent = "Network error. Please check your internet connection and try again.";
+    } finally {
+        responseMessageBox.classList.add('show'); // Show the message box
+    }
+});
+
+// Function to hide the custom message box
+function hideMessageBox() {
+    responseMessageBox.classList.remove('show');
+}
+
+// Dynamic Scrolling for Navbar active state (optional but good for UX)
+const sections = document.querySelectorAll('section');
+const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100; // Adjust for fixed navbar height
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active'); // Remove active from all
+        if (link.getAttribute('href').includes(current)) {
+            link.classList.add('active'); // Add active to current section's link
+        }
+    });
 });
