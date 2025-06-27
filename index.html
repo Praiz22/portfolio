@@ -25,10 +25,17 @@
 </head>
 
 <body>
+  <!-- Page Loader - This will cover the entire screen during loading -->
+  <div id="loader" class="loader">
+    <img src="praixicon.png" alt="Loading..." class="loader-logo">
+  </div>
+
   <!-- Navigation Bar -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-light" data-aos="fade-down">
-    <a class="navbar-brand" href="praixTech.png">
-        <img src="praixTech.png" alt="praixtech logo" width="80px" height="80px" class="logo-animation">
+  <!-- 'fixed-top' class ensures the navbar stays at the top -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" data-aos="fade-down">
+    <a class="navbar-brand" href="#">
+        <!-- Logo image with class for custom sizing and animation -->
+        <img src="praixTech.png" alt="praixtech logo" class="logo-animation">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav"
       aria-expanded="false" aria-label="Toggle navigation">
@@ -47,17 +54,20 @@
   </nav>
 
   <!-- Theme Toggle Button -->
+  <!-- Button to switch between light and dark modes -->
   <button id="theme-toggle" class="theme-toggle-button">
     <i id="theme-icon" class="fas fa-sun"></i>
   </button>
 
   <!-- Hero Section -->
+  <!-- Main introductory section with typing text and hero image -->
   <section class="hero" id="home">
     <div class="container">
       <div class="row hero-content">
         <div class="col-md-12" data-aos="fade-right" data-aos-delay="200">
           <p class="hero-greeting">-Hello</p>
           <h1 class="hero-title">I'm <span class="highlight">Praise,</span><br><span class="typing-text" id="typing-text"></span></h1>
+          <!-- Hero image with class for responsive scaling -->
           <img src="praix-img.png" alt="Praise Oladokun" class="hero-image" data-aos="zoom-in" data-aos-delay="400">
           <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="600">
             Welcome to my portfolio. I am a skilled software developer,
@@ -73,6 +83,7 @@
   </section>
 
   <!-- Services Section -->
+  <!-- Section detailing services offered with glassmorphism cards -->
   <section class="section" id="services">
     <div class="container">
       <h2 class="section-title" data-aos="fade-down">My Services</h2>
@@ -111,6 +122,7 @@
   </section>
 
   <!-- About Me Section -->
+  <!-- Section providing information about Praise, including experience and skills -->
   <section class="section" id="about-me">
     <div class="container">
       <div class="row about-me-content">
@@ -178,6 +190,7 @@
   </section>
 
   <!-- Education & Work Experience Section -->
+  <!-- Section detailing educational background and professional work history -->
   <section class="section" id="education-work">
     <h2 class="section-title" data-aos="fade-down">My Education & Work Experience</h2>
     <p class="section-subtitle" data-aos="fade-up">A brief overview of my educational background and professional experience.</p>
@@ -244,6 +257,7 @@
   </section>
 
   <!-- Projects Section -->
+  <!-- Section showcasing recent projects with detailed modals -->
   <section class="section" id="projects">
     <div class="container">
       <h2 class="section-title" data-aos="fade-down">My Latest Projects</h2>
@@ -329,6 +343,7 @@
   </section>
 
   <!-- Project Modals (with glassmorphism and animations) -->
+  <!-- Modals for Rosco Autos Solution, Graphic Designs, Photosec, and Other Web-Projects -->
   <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel"
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -529,6 +544,7 @@
   </div>
 
   <!-- Testimonials Section -->
+  <!-- Carousel for client testimonials -->
   <section id="testimonials" class="section">
     <div class="container">
       <h2 class="section-title" data-aos="fade-down">What My Clients Say</h2>
@@ -588,6 +604,7 @@
   </section>
 
   <!-- Contact Section -->
+  <!-- Form for clients to get in touch -->
   <section class="section" id="contact">
     <div class="container">
       <h2 class="section-title" data-aos="fade-down">Contact Me</h2>
@@ -609,7 +626,7 @@
         <button class="btn btn-primary interactive-button" type="submit">
           Send Message</button>
       </form>
-      <!-- Custom message box for form submission -->
+      <!-- Custom message box for form submission feedback (replaces alert) -->
       <div id="response-message-box" class="message-box">
         <div class="message-box-content">
           <p id="response-message-text"></p>
@@ -620,6 +637,7 @@
   </section>
 
   <!-- Footer -->
+  <!-- Footer section with copyright and social media links -->
   <footer>
     <p>&copy; 2024 Praix Oladokun. All rights reserved.</p>
     <ul class="social-media">
@@ -649,7 +667,7 @@
         <a href="tel:+2349045048954" target="_blank" title="Phone" class="social-icon-link">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
             <path
-              d="M6.62 10.79a15.62 15.62 0 0 0 5.53 5.53l2.8-2.8a1 1 0 0 1 1.14-.28c.37.15.7.36.98.64l1.48 1.48c.36.36.56.85.56 1.36s-.2 1-.56 1.36l-2.33 2.33a1.61 1.61 0 0 1-2.26 0l-1.48-1.48a1 1 0 0 1-.28-1.14l2.8-2.8a15.62 15.62 0 0 0-5.53-5.53l-2.8 2.8a1 1 0 0 1-1.14.28c-.37-.15-.7-.36-.98-.64l-1.48-1.48c-.36-.36-.56-.85-.56-1.36s.2-1 .56-1.36l2.33-2.33a1.61 1.61 0 0 1 2.26 0l1.48 1.48a1 1 0 0 1 .28 1.14l-2.8 2.8zm5.9 6.36c-2.56 0-5.02-.75-7.1-2.08a1.52 1.52 0 0 1-.69-1.83l.64-2.64a1.5 1.5 0 0 1 1.83-.69c1.61.95 3.35 1.5 5.32 1.5s3.71-.55 5.32-1.5a1.5 1.5 0 0 1 1.83.69l.64 2.64a1.52 1.52 0 0 1-.69 1.83c-2.08 1.33-4.54 2.08-7.1 2.08z" />
+              d="M6.62 10.79a15.62 15.62 0 0 0 5.53 5.53l2.8-2.8a1 1 0 0 1 1.14-.28c.37.15.7.36.98.64l1.48 1.48c.36.36.56-.85.56-1.36s-.2 1-.56 1.36l-2.33 2.33a1.61 1.61 0 0 1-2.26 0l-1.48-1.48a1 1 0 0 1-.28-1.14l2.8-2.8a15.62 15.62 0 0 0-5.53-5.53l-2.8 2.8a1 1 0 0 1-1.14.28c-.37-.15-.7-.36-.98-.64l-1.48-1.48c-.36-.36-.56-.85-.56-1.36s.2-1 .56-1.36l2.33-2.33a1.61 1.61 0 0 1 2.26 0l1.48 1.48a1 1 0 0 1 .28 1.14l-2.8 2.8zm5.9 6.36c-2.56 0-5.02-.75-7.1-2.08a1.52 1.52 0 0 1-.69-1.83l.64-2.64a1.5 1.5 0 0 1 1.83-.69c1.61.95 3.35 1.5 5.32 1.5s3.71-.55 5.32-1.5a1.5 1.5 0 0 1 1.83.69l.64 2.64a1.52 1.52 0 0 1-.69 1.83c-2.08 1.33-4.54 2.08-7.1 2.08z" />
           </svg>
         </a>
       </li>
@@ -676,4 +694,3 @@
 </body>
 
 </html>
-

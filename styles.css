@@ -56,7 +56,7 @@ body {
     background-color: var(--background-color-light);
     color: var(--text-color-light);
     transition: background-color 0.5s ease, color 0.5s ease;
-    margin-top: 80px; /* Adjust for fixed navbar */
+    padding-top: 80px; /* Adjust for fixed navbar height */
     overflow-x: hidden; /* Prevent horizontal scroll due to animations */
 }
 
@@ -113,27 +113,39 @@ body.dark-mode .glassmorphism:hover {
 
 /* Navbar Styling */
 .navbar {
-    position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    background-color: var(--navbar-bg-light);
+    /* Apply glassmorphism properties directly for the header */
+    background: var(--navbar-bg-light);
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3); /* Subtle border for glass look */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    transition: background-color 0.5s ease, box-shadow 0.5s ease;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
     padding: 10px 0;
 }
 
 body.dark-mode .navbar {
-    background-color: var(--navbar-bg-dark);
+    background: var(--navbar-bg-dark);
+    border-bottom: 1px solid rgba(50, 50, 70, 0.3);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-brand img {
+    width: 70px; /* Increased size for better visibility */
+    height: 70px; /* Increased size for better visibility */
     border-radius: 50%;
     transition: transform 0.3s ease;
+    display: block; /* Ensures no extra space below the image */
+    object-fit: contain; /* Ensures the entire logo is visible */
 }
+/* Adjust padding for the navbar-brand to ensure logo isn't cropped by its container */
+.navbar-brand {
+    padding: 0; /* Remove default padding if any */
+    margin-left: 15px; /* Add some left margin */
+}
+
 
 .navbar-brand img:hover {
     transform: rotate(10deg) scale(1.05);
@@ -177,7 +189,8 @@ body.dark-mode .navbar-nav .nav-link {
     display: flex;
     align-items: center;
     text-align: center;
-    background: url('[https://placehold.co/1920x1080/000000/FFFFFF?text=Background](https://placehold.co/1920x1080/000000/FFFFFF?text=Background)') no-repeat center center/cover; /* Placeholder, consider a subtle pattern or gradient */
+    /* Using a placeholder background image for now */
+    background: url('[https://placehold.co/1920x1080/000000/FFFFFF?text=Background](https://placehold.co/1920x1080/000000/FFFFFF?text=Background)') no-repeat center center/cover;
     position: relative;
     overflow: hidden;
     padding: 100px 0;
@@ -224,13 +237,15 @@ body.dark-mode .hero::before {
 }
 
 .hero-image {
-    max-width: 300px;
-    height: auto;
+    width: 90%; /* Responsive width, adjust as needed */
+    max-width: 350px; /* Maximum width for larger screens */
+    height: auto; /* Maintain aspect ratio */
     border-radius: 20px;
     margin-top: 30px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
     border: 3px solid #f39f22;
     transition: transform 0.4s ease-in-out;
+    object-fit: contain; /* Ensures the entire image is visible, scales down if needed */
 }
 
 .hero-image:hover {
@@ -1031,7 +1046,7 @@ footer .social-media .social-icon-link svg {
 }
 
 body.dark-mode footer .social-media .social-icon-link img,
-body.dark-mode footer .social-icon-link svg {
+body.dark-mode footer .social-media .social-icon-link svg {
     filter: invert(0.9);
 }
 
@@ -1118,6 +1133,80 @@ body.dark-mode .theme-toggle-button {
     transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
+/* Loader Styles */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color-light); /* Matches body background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* High z-index to cover everything */
+    transition: opacity 0.7s ease, visibility 0.7s ease; /* Smooth transition for hiding */
+}
+
+body.dark-mode .loader {
+    background-color: var(--background-color-dark);
+}
+
+.loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.loader-logo {
+    width: 120px; /* Adjust size as needed */
+    height: 120px;
+    animation: futuristic-pulse 1.5s infinite alternate, fade-blink 1.0s infinite;
+    border-radius: 50%; /* Make it circular */
+    object-fit: contain; /* Ensure logo fits within the circle */
+}
+
+/* Keyframe animations for the loader logo */
+@keyframes futuristic-pulse {
+    0% { transform: scale(1); filter: brightness(1); }
+    100% { transform: scale(1.1); filter: brightness(1.5); }
+}
+
+@keyframes fade-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+
+/* AOS overrides for smoother integration with custom animations */
+/* These ensure elements start invisible and animate in with AOS */
+[data-aos] {
+    opacity: 0;
+    transition-property: opacity, transform;
+}
+[data-aos].aos-animate {
+    opacity: 1;
+}
+
+/* Custom animation for typing text in the hero section */
+.typing-text {
+    display: inline-block;
+    overflow: hidden; /* Ensures the text is hidden until typed */
+    white-space: nowrap; /* Keeps the text on a single line */
+    /* Combines typing animation for width and blinking caret */
+    animation: typing 3s steps(30, end) forwards, blink-caret .75s step-end infinite;
+}
+
+/* Typing animation */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* Blinking caret animation */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #f39f22; }
+}
 /* Media Queries for Responsiveness */
 @media (max-width: 991.98px) {
     .navbar-collapse {
@@ -1156,8 +1245,9 @@ body.dark-mode .theme-toggle-button {
         font-size: 1.3rem;
     }
     .hero-image {
-        max-width: 250px;
-        height: 350px;
+        width: 100%; /* Take full width of parent on small screens */
+        max-width: 250px; /* Set a max-width to prevent excessive stretching */
+        height: auto; /* Maintain aspect ratio */
     }
     .section-title {
         font-size: 2.2rem;
@@ -1165,8 +1255,12 @@ body.dark-mode .theme-toggle-button {
     .section-subtitle {
         font-size: 1rem;
     }
+    .services-container {
+        flex-direction: column; /* Stack service cards vertically on smaller screens */
+        align-items: center;
+    }
     .service-card {
-        width: 100%; /* Full width on small screens */
+        width: 90%; /* Adjust width for small screens to prevent overflow */
     }
     .experience-card {
         margin-bottom: 20px;
@@ -1193,6 +1287,17 @@ body.dark-mode .theme-toggle-button {
     .modal-header .close {
         font-size: 2rem;
     }
+    .project-item {
+        flex-direction: column; /* Stack project items vertically on smaller screens */
+    }
+    .project-item:nth-child(even) .project-image-container,
+    .project-item:nth-child(even) .project-details {
+        order: unset; /* Reset order for consistent stacking */
+    }
+    .navbar-brand img {
+        width: 60px; /* Adjust logo size for tablet/mobile */
+        height: 60px;
+    }
 }
 
 @media (max-width: 575.98px) {
@@ -1203,8 +1308,7 @@ body.dark-mode .theme-toggle-button {
         font-size: 1.1rem;
     }
     .hero-image {
-        max-width: 200px;
-        height: 300px;
+        max-width: 180px; /* Even smaller max-width for very small mobile screens */
     }
     .btn {
         padding: 10px 20px;
@@ -1225,46 +1329,8 @@ body.dark-mode .theme-toggle-button {
     .social-media li {
         margin: 5px; /* Reduce gap on very small screens */
     }
-}
-
-/* Animations for icons (subtle) */
-.service-icon, .social-icon-link img, .social-icon-link svg {
-    transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.service-card:hover .service-icon {
-    transform: scale(1.1) rotate(5deg);
-}
-
-.social-icon-link:hover img, .social-icon-link:hover svg {
-    transform: scale(1.1);
-}
-
-/* AOS overrides for smoother integration with custom animations */
-[data-aos] {
-    opacity: 0;
-    transition-property: opacity, transform;
-}
-[data-aos].aos-animate {
-    opacity: 1;
-}
-
-/* Custom animation for typing text */
-.typing-text {
-    display: inline-block;
-    overflow: hidden; /* Ensures the text is hidden until typed */
-    white-space: nowrap; /* Keeps the text on a single line */
-    animation: typing 3s steps(30, end) forwards, blink-caret .75s step-end infinite;
-}
-
-/* Typing animation */
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
-}
-
-/* Blinking caret animation */
-@keyframes blink-caret {
-    from, to { border-color: transparent }
-    50% { border-color: #f39f22; }
+    .navbar-brand img {
+        width: 50px; /* Even smaller logo for tiny mobile screens */
+        height: 50px;
+    }
 }

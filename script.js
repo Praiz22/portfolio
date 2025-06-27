@@ -58,12 +58,13 @@ const skillFills = document.querySelectorAll('.skill .fill');
 const animateSkillMeters = () => {
     skillFills.forEach(fill => {
         const rect = fill.getBoundingClientRect();
+        // Check if the element is in the viewport
         const isInView = (rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight));
 
         if (isInView && !fill.dataset.animated) {
             const percent = fill.dataset.percent;
             fill.style.width = percent + '%';
-            fill.dataset.animated = 'true'; // Mark as animated
+            fill.dataset.animated = 'true'; // Mark as animated to prevent re-animation
         }
     });
 };
@@ -87,7 +88,7 @@ function animateCountUp(element, target, duration = 2000) {
             element.textContent = Math.ceil(start);
             requestAnimationFrame(updateCounter);
         } else {
-            element.textContent = target;
+            element.textContent = target; // Ensure final value is exact
         }
     };
 
@@ -130,12 +131,13 @@ function setTheme(theme) {
     }
 }
 
-// Check for saved theme preference or system preference
+// Check for saved theme preference or system preference on load
 document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
         setTheme(savedTheme);
     } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // Check system preference if no saved theme
         setTheme('dark');
     } else {
         setTheme('light');
@@ -187,33 +189,49 @@ contactForm.addEventListener('submit', async (e) => {
         console.error('Submission error:', error);
         responseMessageText.textContent = "Network error. Please check your internet connection and try again.";
     } finally {
-        responseMessageBox.classList.add('show'); // Show the message box
+        responseMessageBox.classList.add('show'); // Show the message box regardless of success/failure
     }
 });
 
-// Function to hide the custom message box
+// Function to hide the custom message box (called by button click in HTML)
 function hideMessageBox() {
     responseMessageBox.classList.remove('show');
 }
 
-// Dynamic Scrolling for Navbar active state (optional but good for UX)
+// Dynamic Scrolling for Navbar active state
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
 
 window.addEventListener('scroll', () => {
     let current = '';
+    // Determine the current section in view
     sections.forEach(section => {
-        const sectionTop = section.offsetTop - 100; // Adjust for fixed navbar height
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+        // Adjust for fixed navbar height when calculating section top
+        const sectionTop = section.offsetTop - document.querySelector('.navbar').offsetHeight - 20; // Added extra buffer
+        const sectionBottom = sectionTop + section.offsetHeight;
+        if (pageYOffset >= sectionTop && pageYOffset < sectionBottom) {
             current = section.getAttribute('id');
         }
     });
 
+    // Update active class on navigation links
     navLinks.forEach(link => {
-        link.classList.remove('active'); // Remove active from all
+        link.classList.remove('active'); // Remove active from all links
         if (link.getAttribute('href').includes(current)) {
-            link.classList.add('active'); // Add active to current section's link
+            link.classList.add('active'); // Add active to the link corresponding to the current section
         }
     });
+});
+
+// Page Loader Control
+const loader = document.getElementById('loader');
+
+window.addEventListener('load', () => {
+    // Hide the loader after all resources are loaded
+    setTimeout(() => {
+        loader.classList.add('hidden');
+        // Enable scrolling and other interactions after loader is hidden
+        document.body.style.overflow = 'auto';
+    }, 1000); // Increased delay slightly to ensure animations complete and resources load
+    document.body.style.overflow = 'hidden'; // Prevent scrolling while loader is visible
 });
