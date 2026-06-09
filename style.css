@@ -1,0 +1,187 @@
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #030712;
+    color: #f3f4f6;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Glassmorphism Structural Cards */
+.glass-card {
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-input {
+    background: rgba(3, 7, 18, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.glass-input:focus {
+    border-color: #f97316;
+    box-shadow: 0 0 15px rgba(249, 115, 22, 0.2);
+    background: rgba(3, 7, 18, 0.8);
+}
+
+/* Matrix Ambient Display Canvas */
+#matrixCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+/* Atmospheric Glow Enhancements */
+.glow-orange {
+    box-shadow: 0 0 40px -10px rgba(249, 115, 22, 0.35);
+}
+.text-glow-orange {
+    text-shadow: 0 0 15px rgba(249, 115, 22, 0.5);
+}
+
+/* Typewriter Interactive Cursor */
+.typewriter-cursor::after {
+    content: '_';
+    animation: blink 0.8s infinite;
+}
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+/* Graphic Carousel 3D Matrix Mapping */
+.carousel-stage {
+    perspective: 1000px;
+    height: 240px;
+    width: 100%;
+}
+@media (min-width: 640px) { .carousel-stage { height: 360px; perspective: 1200px; } }
+@media (min-width: 1024px) { .carousel-stage { perspective: 2000px; height: 440px; } }
+
+.carousel-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.carousel-item {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 120px;
+    height: 165px;
+    margin-left: -60px;
+    margin-top: -82px;
+    transform-style: preserve-3d;
+    cursor: grab;
+    user-select: none;
+    -webkit-user-drag: none;
+    will-change: transform, opacity;
+}
+@media (min-width: 640px) {
+    .carousel-item { width: 190px; height: 260px; margin-left: -95px; margin-top: -130px; }
+}
+@media (min-width: 1024px) {
+    .carousel-item { width: 240px; height: 330px; margin-left: -120px; margin-top: -165px; }
+}
+
+/* Software Deck 3D Cascade Architecture */
+.deck-stage {
+    perspective: 1000px;
+    height: 240px;
+    position: relative;
+    width: 100%;
+}
+@media (min-width: 640px) { .deck-stage { height: 360px; perspective: 1200px; } }
+@media (min-width: 1024px) { .deck-stage { height: 420px; } }
+
+.deck-item {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 280px;
+    height: 200px;
+    margin-left: -140px;
+    margin-top: -100px;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s, z-index 0.5s;
+    cursor: pointer;
+    will-change: transform, opacity;
+}
+@media (min-width: 400px) {
+    .deck-item { width: 330px; height: 200px; margin-left: -165px; }
+}
+@media (min-width: 640px) {
+    .deck-item { width: 440px; height: 270px; margin-left: -220px; margin-top: -135px; }
+}
+@media (min-width: 1024px) {
+    .deck-item { width: 560px; height: 310px; margin-left: -280px; margin-top: -155px; }
+}
+
+/* Infinite Review Ticker Tracking */
+@keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+.ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker 32s linear infinite;
+}
+.ticker-wrap:hover .ticker-track {
+    animation-play-state: paused;
+}
+
+/* Flow Form Step Connector Channels */
+.form-node {
+    opacity: 0.3;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.form-node.node-active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+.form-line-node {
+    width: 2px;
+    height: 0;
+    background: linear-gradient(to bottom, #f97316, transparent);
+    transition: height 0.6s ease;
+    margin-left: 20px;
+}
+
+/* Vector Form Transmission Animation */
+@keyframes flyAway {
+    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+    25% { transform: translate(-20px, 10px) rotate(-10deg) scale(0.9); opacity: 0.9; }
+    100% { transform: translate(400px, -200px) rotate(35deg) scale(0.2); opacity: 0; }
+}
+.animate-plane {
+    animation: flyAway 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Font Glitch Layer Positioning */
+.matrix-glitch-text {
+    font-family: 'Share Tech Mono', monospace;
+    position: relative;
+}
+
+/* Abstract Structural Ambience Blurs */
+.ambient-blur {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    z-index: 0;
+    opacity: 0.08;
+    pointer-events: none;
+}
+@media (min-width: 640px) {
+    .ambient-blur { filter: blur(130px); opacity: 0.1; }
+}

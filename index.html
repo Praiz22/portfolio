@@ -1,696 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Praise Oladokun-Portfolio</title>
-  <meta name="description" content="Hi, I'm Praise! I'm a web developer, designer, and graphics designer
-   with a passion for crafting stunning digital experiences.
-   With a keen eye for detail and a love for innovative design, I bring ideas to life through code, color, and creativity.
-   Explore my portfolio to see how I can help you elevate your brand and make a lasting impression online!">
-  <link rel="canonical" href="https://praiz22.github.io/portfolio/">
-  <meta name="robots" content="index, follow">
-  <link rel="icon" href="praixicon.png">
-  <!-- Bootstrap CSS from CDN -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Font Awesome for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <!-- Animate On Scroll (AOS) CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-  <!-- Custom CSS file -->
-  <link rel="stylesheet" href="styles.css">
-  <!-- Google Fonts for sleek and techy/futuristic fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    
+    <title>Praise Oladokun | Full-Stack Web Developer & Graphic Designer</title>
+    <meta name="title" content="Praise Oladokun | Full-Stack Web Developer & Graphic Designer">
+    <meta name="description" content="Hi, I'm Praise! I'm a web developer, designer, and graphics designer with a passion for crafting stunning digital experiences. I bring ideas to life through code, color, and creativity. Explore my portfolio to see how I can help you elevate your brand and make a lasting impression online!">
+    <meta name="keywords" content="Praise Oladokun, PraixTech, Web Developer, Graphic Designer, UI/UX Designer, Full-Stack Developer, Portfolio, Firebase, Supabase, Tailwind CSS, Responsive Web Design">
+    <meta name="author" content="Praise Oladokun">
+    <link rel="canonical" href="https://praiz22.github.io/portfolio/">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" type="image/png" href="praixTech.png">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://praiz22.github.io/portfolio/">
+    <meta property="og:title" content="Praise Oladokun | Full-Stack Web Developer & Graphic Designer">
+    <meta property="og:description" content="Explore advanced institutional portals, interactive web applications, and premium brand visual systems built by Praise Oladokun.">
+    <meta property="og:image" content="https://praiz22.github.io/portfolio/image_283240.jpg">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://praiz22.github.io/portfolio/">
+    <meta property="twitter:title" content="Praise Oladokun | Full-Stack Web Developer & Graphic Designer">
+    <meta property="twitter:description" content="Explore advanced institutional portals, interactive web applications, and premium brand visual systems built by Praise Oladokun.">
+    <meta property="twitter:image" content="https://praiz22.github.io/portfolio/image_283240.jpg">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
 </head>
+<body class="relative min-h-screen selection:bg-orange-500 selection:text-white overflow-x-hidden bg-[#030712] text-[#f3f4f6]">
 
-<body>
-  <!-- Page Loader - This will cover the entire screen during loading -->
-  <div id="loader" class="loader">
-    <img src="praixicon.png" alt="Loading..." class="loader-logo">
-  </div>
+    <div class="ambient-blur w-48 h-48 sm:w-96 sm:h-96 bg-orange-600 top-[-5%] left-[-5%]"></div>
+    <div class="ambient-blur w-72 h-72 sm:w-[600px] sm:h-[600px] bg-blue-700 top-[35%] right-[-10%]"></div>
+    <div class="ambient-blur w-48 h-48 sm:w-96 sm:h-96 bg-orange-500 bottom-[15%] left-[10%]"></div>
 
-  <!-- Navigation Bar -->
-  <!-- 'fixed-top' class ensures the navbar stays at the top -->
-  <nav class="navbar navbar-expand-lg navbar-light fixed-top" data-aos="fade-down">
-    <a class="navbar-brand" href="#">
-        <!-- Logo image with class for custom sizing and animation -->
-        <img src="praixTech.png" alt="praixtech logo" class="logo-animation">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" aria-controls="mainNav"
-      aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="mainNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-        <li class="nav-item"><a class="nav-link" href="#about-me">About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonials</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+    <main class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 space-y-20 sm:space-y-40">
 
-  <!-- Theme Toggle Button -->
-  <!-- Button to switch between light and dark modes -->
-  <button id="theme-toggle" class="theme-toggle-button">
-    <i id="theme-icon" class="fas fa-sun"></i>
-  </button>
-
-  <!-- Hero Section -->
-  <!-- Main introductory section with typing text and hero image -->
-  <section class="hero" id="home">
-    <div class="container">
-      <div class="row hero-content">
-        <div class="col-md-12" data-aos="fade-right" data-aos-delay="200">
-          <p class="hero-greeting">-Hello</p>
-          <h1 class="hero-title">I'm <span class="highlight">Praise,</span><br><span class="typing-text" id="typing-text"></span></h1>
-          <!-- Hero image with class for responsive scaling -->
-          <img src="praix-img.png" alt="Praise Oladokun" class="hero-image" data-aos="zoom-in" data-aos-delay="400">
-          <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="600">
-            Welcome to my portfolio. I am a skilled software developer,
-            products and graphics designer specializing in web design, SEO, and more.
-          </p>
-          <div class="hero-buttons" data-aos="fade-up" data-aos-delay="800">
-            <a href="#projects" class="btn btn-primary interactive-button">Portfolio</a>
-            <a href="#contact" class="btn btn-secondary interactive-button">Hire Me</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <!-- Section detailing services offered with glassmorphism cards -->
-  <section class="section" id="services">
-    <div class="container">
-      <h2 class="section-title" data-aos="fade-down">My Services</h2>
-      <p class="section-subtitle" data-aos="fade-up">Offering a range of services to enhance your
-        online presence and design needs.</p>
-      <div class="services-container">
-        <div class="service-card glassmorphism" data-aos="fade-up" data-aos-delay="100">
-          <div class="animated-icon">
-            <i class="fas fa-code service-icon"></i>
-          </div>
-          <h3 class="service-title">UI/UX Design</h3>
-          <p class="service-description">Crafting user-friendly and visually appealing interfaces for websites and
-            mobile applications.</p>
-          <a href="#" class="btn btn-tertiary interactive-button">Learn more</a>
-        </div>
-        <div class="service-card glassmorphism" data-aos="fade-up" data-aos-delay="200">
-          <div class="animated-icon">
-            <i class="fas fa-mobile-alt service-icon"></i>
-          </div>
-          <h3 class="service-title">Graphic Design</h3>
-          <p class="service-description">Designing intuitive and creative graphic for your brand, and personal needs.
-          </p>
-          <a href="#" class="btn btn-tertiary interactive-button">Learn more</a>
-        </div>
-        <div class="service-card glassmorphism" data-aos="fade-up" data-aos-delay="300">
-          <div class="animated-icon">
-            <i class="fas fa-globe service-icon"></i>
-          </div>
-          <h3 class="service-title">Web Design</h3>
-          <p class="service-description">Creating responsive, modern and fully functional websites and web functions
-            tailored to your needs.</p>
-          <a href="#" class="btn btn-tertiary interactive-button">Learn more</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Me Section -->
-  <!-- Section providing information about Praise, including experience and skills -->
-  <section class="section" id="about-me">
-    <div class="container">
-      <div class="row about-me-content">
-        <div class="col-md-12">
-          <h2 class="about-me-title" data-aos="fade-down">Who is Praise Oladokun?</h2>
-          <p class="about-me-description" data-aos="fade-up">I am a software developer and graphics
-            designer with extensive experience in web and app design. I have a passion for creating visually stunning
-            and highly functional designs.</p>
-
-          <div class="row experience-row">
-            <div class="col-md-4">
-              <div class="experience-card glassmorphism" data-aos="flip-left" data-aos-delay="100">
-                <h3 class="experience-title" id="years-of-experience">0</h3>
-                <p class="experience-subtitle">Years of Experience</p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="experience-card glassmorphism" data-aos="flip-left" data-aos-delay="200">
-                <h3 class="experience-title" id="projects-completed">0</h3>
-                <p class="experience-subtitle">Projects Completed</p>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="experience-card glassmorphism" data-aos="flip-left" data-aos-delay="300">
-                <h3 class="experience-title" id="industries-covered">0</h3>
-                <p class="experience-subtitle">Industries Covered</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="skill-meter-container" data-aos="fade-up">
-        <h5> <strong> My Skills</strong></h5>
-        <div class="skill-group glassmorphism">
-          <div class="skill">
-            <p>HTML, CSS, JavaScript</p>
-            <div class="meter">
-              <div class="fill" data-percent="90"></div>
-            </div>
-          </div>
-          <div class="skill">
-            <p>Python, Bootstrap, My SQL, Firebase</p>
-            <div class="meter">
-              <div class="fill" data-percent="70"></div>
-            </div>
-          </div>
-          <div class="skill">
-            <p>Github, Figma, Contra</p>
-            <div class="meter">
-              <div class="fill" data-percent="80"></div>
-            </div>
-          </div>
-          <div class="skill">
-            <p>Photoshop, Corel-Draw, Light Room</p>
-            <div class="meter">
-              <div class="fill" data-percent="65"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-5">
-        <a href="praix-resume.pdf" class="download-cv interactive-button" download data-aos="zoom-in">Download My CV</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Education & Work Experience Section -->
-  <!-- Section detailing educational background and professional work history -->
-  <section class="section" id="education-work">
-    <h2 class="section-title" data-aos="fade-down">My Education & Work Experience</h2>
-    <p class="section-subtitle" data-aos="fade-up">A brief overview of my educational background and professional experience.</p>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6" data-aos="fade-right">
-          <div class="glass-card education-card">
-            <h4>Education</h4>
-            <ul>
-              <li>
-                <div class="card-body">
-                  <p><strong>Ladoke Akintola University of Technology</strong></p>
-                  <p>Computer Science</p>
-                  <p>2021-2025</p>
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[75vh] lg:min-h-[80vh] pt-4 lg:pt-0">
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left order-2 lg:order-1">
+                <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 text-orange-400 text-xs font-semibold tracking-wider uppercase mx-auto lg:mx-0">
+                    <span class="w-2 h-2 rounded-full bg-orange-500 animate-ping"></span> Available for New Opportunities
                 </div>
-              </li>
-              <li>
-                <div class="card-body">
-                  <p><strong>Tds Global Ventures</strong></p>
-                  <p>Graphic Design and Art Visualization</p>
-                  <p>2019-2021</p>
+                
+                <h1 class="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight leading-none text-white">
+                    Hi, I'm <span class="text-orange-500 text-glow-orange">Praise</span>,<br class="hidden sm:inline">
+                    <span id="typewriter" class="typewriter-cursor text-transparent bg-clip-text bg-gradient-to-r from-white via-orange-400 to-orange-500 min-h-[1.2em] inline-block"></span>
+                </h1>
+                
+                <p class="text-gray-400 text-xs sm:text-base md:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed font-light">
+                    I am a full-stack software developer and graphic designer specializing in building highly interactive web portals, scalable application interfaces, and polished brand identity systems.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-2">
+                    <a href="#portfolio" class="w-full sm:w-auto text-center px-8 py-3.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold tracking-wide transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg shadow-orange-500/25 text-sm">
+                        View My Portfolio
+                    </a>
+                    <a href="#contact" class="w-full sm:w-auto text-center px-8 py-3.5 rounded-xl glass-card text-gray-300 hover:text-white hover:bg-white/5 font-bold tracking-wide transition-all duration-300 text-sm">
+                        Get In Touch
+                    </a>
                 </div>
-              </li>
-              <li>
-                <div class="card-body">
-                  <p><strong>Amicable High School</strong></p>
-                  <p>High School</p>
-                  <p>2013-2019</p>
+            </div>
+
+            <div class="lg:col-span-5 order-1 lg:order-2 flex justify-center">
+                <div class="relative group aspect-[3/4] w-full max-w-[220px] sm:max-w-[310px] rounded-2xl overflow-hidden glass-card p-1.5 sm:p-2 border-orange-500/20 hover:border-orange-500/40 transition-all duration-500 transform hover:scale-[1.01] glow-orange">
+                    <div class="w-full h-full rounded-xl overflow-hidden flex">
+                        <div class="w-1/2 h-full bg-cover bg-center filter grayscale contrast-125" style="background-image: url('praixtechart.webp'); background-position: 25% center;"></div>
+                        <div class="w-1/2 h-full bg-cover bg-center border-l border-orange-500/30" style="background-image: url('praixtechart2.webp'); background-position: 75% center;"></div>
+                    </div>
                 </div>
-              </li>
+            </div>
+        </section>
+
+        <section id="counters" class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-5xl mx-auto relative z-10 w-full">
+            <div class="glass-card p-4 sm:p-6 rounded-2xl text-center border-b-2 border-b-transparent hover:border-b-orange-500 transition-all duration-300">
+                <div class="text-3xl sm:text-5xl font-black text-orange-500 mb-1"><span class="counter-value" data-target="5">0</span>+</div>
+                <div class="text-[9px] sm:text-[10px] uppercase tracking-widest text-gray-400 font-bold">Years of Experience</div>
+            </div>
+            <div class="glass-card p-4 sm:p-6 rounded-2xl text-center border-b-2 border-b-transparent hover:border-b-orange-500 transition-all duration-300">
+                <div class="text-3xl sm:text-5xl font-black text-orange-500 mb-1"><span class="counter-value" data-target="20">0</span>+</div>
+                <div class="text-[9px] sm:text-[10px] uppercase tracking-widest text-gray-400 font-bold">Projects Delivered</div>
+            </div>
+            <div class="glass-card p-4 sm:p-6 rounded-2xl text-center border-b-2 border-b-transparent hover:border-b-orange-500 transition-all duration-300">
+                <div class="text-3xl sm:text-5xl font-black text-orange-500 mb-1"><span class="counter-value" data-target="7">0</span>+</div>
+                <div class="text-[9px] sm:text-[10px] uppercase tracking-widest text-gray-400 font-bold">Industries Served</div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="space-y-6 sm:space-y-8 overflow-hidden w-full">
+            <div class="text-center space-y-2 px-4">
+                <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">Featured Graphic Design</h2>
+                <p class="text-gray-400 max-w-md mx-auto text-xs sm:text-sm font-light">Explore visual identities and user experience mockups. Swipe or drag to browse the 3D gallery.</p>
+            </div>
+
+            <div class="relative w-full max-w-6xl mx-auto px-2 sm:px-4">
+                <div id="carouselContainer" class="carousel-stage flex items-center justify-center">
+                    <div id="carouselTrack" class="carousel-track"></div>
+                </div>
+                
+                <div class="absolute top-1/2 -translate-y-1/2 left-0 right-0 hidden md:flex justify-between px-4 pointer-events-none">
+                    <button id="prevBtn" class="pointer-events-auto w-12 h-12 rounded-xl glass-card flex items-center justify-center text-gray-400 hover:text-white transition-all transform active:scale-95"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
+                    <button id="nextBtn" class="pointer-events-auto w-12 h-12 rounded-xl glass-card flex items-center justify-center text-gray-400 hover:text-white transition-all transform active:scale-95"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="software-dev" class="space-y-6 sm:space-y-8 overflow-hidden w-full">
+            <div class="text-center space-y-2 px-4">
+                <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">Software Engineering</h2>
+                <p class="text-gray-400 max-w-md mx-auto text-xs sm:text-sm font-light">Interactive 3D preview of full-stack projects, production web portals, and automation systems.</p>
+            </div>
+
+            <div class="relative w-full max-w-5xl mx-auto px-2 sm:px-4">
+                <div id="deckContainer" class="deck-stage flex items-center justify-center">
+                    </div>
+                
+                <div class="flex justify-center items-center gap-6 mt-4 sm:mt-6">
+                    <button id="deckPrev" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl glass-card flex items-center justify-center text-gray-400 hover:text-white transition-all transform active:scale-95">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    </button>
+                    <span id="deckIndicator" class="text-xs font-mono font-bold tracking-widest text-orange-400">1 / 7</span>
+                    <button id="deckNext" class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl glass-card flex items-center justify-center text-gray-400 hover:text-white transition-all transform active:scale-95">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="max-w-3xl mx-auto space-y-6 px-2 w-full">
+            <div class="glass-card p-5 sm:p-10 rounded-2xl space-y-6">
+                <h3 class="text-base sm:text-xl font-bold text-white tracking-tight text-center sm:text-left">Core Technical Competencies</h3>
+                <div class="space-y-5">
+                    <div class="space-y-2">
+                        <div class="flex flex-col sm:flex-row justify-between text-xs font-bold tracking-wide gap-1"><span class="text-white">Frontend Architecture (HTML5, CSS3, ES6+ JS, Tailwind)</span><span class="text-orange-400 sm:text-right">90%</span></div>
+                        <div class="w-full h-2.5 bg-slate-950/60 rounded-full overflow-hidden p-0.5 border border-white/5">
+                            <div class="skill-bar h-full rounded-full bg-gradient-to-r from-orange-600 to-orange-400 transform origin-left transition-transform duration-1000 ease-out" style="transform: scale-x(0.90);"></div>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex flex-col sm:flex-row justify-between text-xs font-bold tracking-wide gap-1"><span class="text-white">Backend & Cloud Infrastructures (Python, SQL, Firebase, Supabase)</span><span class="text-orange-400 sm:text-right">75%</span></div>
+                        <div class="w-full h-2.5 bg-slate-950/60 rounded-full overflow-hidden p-0.5 border border-white/5">
+                            <div class="skill-bar h-full rounded-full bg-gradient-to-r from-orange-600 to-orange-400 transform origin-left transition-transform duration-1000 ease-out" style="transform: scale-x(0.75);"></div>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex flex-col sm:flex-row justify-between text-xs font-bold tracking-wide gap-1"><span class="text-white">Design Systems & Prototyping (Figma, Adobe Suite, Git Hub)</span><span class="text-orange-400 sm:text-right">85%</span></div>
+                        <div class="w-full h-2.5 bg-slate-950/60 rounded-full overflow-hidden p-0.5 border border-white/5">
+                            <div class="skill-bar h-full rounded-full bg-gradient-to-r from-orange-600 to-orange-400 transform origin-left transition-transform duration-1000 ease-out" style="transform: scale-x(0.85);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="space-y-4 py-2 w-full">
+            <div class="text-center"><p class="text-[10px] uppercase font-bold tracking-widest text-gray-500">Client Endorsements & Feedback</p></div>
+            <div class="ticker-wrap w-full overflow-hidden relative glass-card py-6 border-x-0 bg-slate-950/20">
+                <div class="ticker-track space-x-6 sm:space-x-12 items-center text-gray-300">
+                    <div class="w-[280px] sm:w-[420px] shrink-0 glass-card p-4 sm:p-5 rounded-xl border-l-2 border-l-orange-500 flex flex-col justify-between whitespace-normal">
+                        <p class="text-xs sm:text-sm font-light italic leading-relaxed text-gray-400">"Praise delivered our administrative portal ahead of schedule. The user tracking, dynamic dashboard features, and responsive layout operate flawlessly."</p>
+                        <h4 class="text-xs font-bold text-white mt-3 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> Management Team, Latter Glory Academy</h4>
+                    </div>
+                    <div class="w-[280px] sm:w-[420px] shrink-0 glass-card p-4 sm:p-5 rounded-xl border-l-2 border-l-blue-500 flex flex-col justify-between whitespace-normal">
+                        <p class="text-xs sm:text-sm font-light italic leading-relaxed text-gray-400">"Exceptional design capabilities paired with rigorous code structure. The intuitive interface drastically increased our digital workspace efficiency."</p>
+                        <h4 class="text-xs font-bold text-white mt-3 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Project Lead, PraixTech Operations</h4>
+                    </div>
+                    <div class="w-[280px] sm:w-[420px] shrink-0 glass-card p-4 sm:p-5 rounded-xl border-l-2 border-l-orange-500 flex flex-col justify-between whitespace-normal">
+                        <p class="text-xs sm:text-sm font-light italic leading-relaxed text-gray-400">"Praise delivered our administrative portal ahead of schedule. The user tracking, dynamic dashboard features, and responsive layout operate flawlessly."</p>
+                        <h4 class="text-xs font-bold text-white mt-3 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span> Management Team, Latter Glory Academy</h4>
+                    </div>
+                    <div class="w-[280px] sm:w-[420px] shrink-0 glass-card p-4 sm:p-5 rounded-xl border-l-2 border-l-blue-500 flex flex-col justify-between whitespace-normal">
+                        <p class="text-xs sm:text-sm font-light italic leading-relaxed text-gray-400">"Exceptional design capabilities paired with rigorous code structure. The intuitive interface drastically increased our digital workspace efficiency."</p>
+                        <h4 class="text-xs font-bold text-white mt-3 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Project Lead, PraixTech Operations</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="max-w-xl mx-auto space-y-8 sm:space-y-12 px-2 w-full" id="contact">
+            <div class="text-center space-y-2">
+                <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">Start a Project</h2>
+                <p class="text-gray-400 text-xs sm:text-sm font-light">Fill out the fields below to initiate an immediate project request.</p>
+            </div>
+
+            <form id="contact-form" action="https://formsubmit.co/praiseola22@gmail.com" method="POST" class="relative z-10 space-y-0 w-full">
+                <input type="hidden" name="_captcha" value="false">
+                
+                <div id="node-name" class="form-node node-active space-y-2">
+                    <label for="name" class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-orange-400 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-orange-500 shadow-sm shadow-orange-500/50"></span> 01 / Full Name or Enterprise Title
+                    </label>
+                    <input type="text" id="name" name="name" required placeholder="What should I call you?" class="w-full glass-input rounded-xl px-4 sm:px-5 py-3 sm:py-3.5 text-sm text-white focus:outline-none">
+                </div>
+
+                <div id="line-1" class="form-line-node"></div>
+
+                <div id="node-email" class="form-node space-y-2">
+                    <label for="email" class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-gray-400 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-gray-600 node-dot"></span> 02 / Email Address
+                    </label>
+                    <input type="email" id="email" name="email" required placeholder="name@domain.com" class="w-full glass-input rounded-xl px-4 sm:px-5 py-3 sm:py-3.5 text-sm text-white focus:outline-none">
+                </div>
+
+                <div id="line-2" class="form-line-node"></div>
+
+                <div id="node-phone" class="form-node space-y-2">
+                    <label for="phone" class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-gray-400 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-gray-600 node-dot"></span> 03 / Phone Connection (Optional)
+                    </label>
+                    <div id="phone-container" class="w-full h-12 overflow-hidden transition-all duration-500 ease-out border border-white/5 bg-slate-950/20 rounded-xl relative cursor-pointer flex items-center px-4 sm:px-5">
+                        <span id="phone-placeholder-text" class="text-xs text-gray-500 font-light truncate">Click to add telephone access...</span>
+                        <input type="tel" id="phone" name="phone" class="w-full h-full bg-transparent text-sm text-white focus:outline-none absolute inset-0 px-4 sm:px-5 opacity-0 pointer-events-none transition-opacity duration-300">
+                    </div>
+                </div>
+
+                <div id="line-3" class="form-line-node"></div>
+
+                <div id="node-message" class="form-node space-y-2">
+                    <label for="message" class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-gray-400 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-gray-600 node-dot"></span> 04 / Project Details & Scope
+                    </label>
+                    <textarea id="message" name="message" required rows="4" placeholder="Briefly specify project parameters or product timelines..." class="w-full glass-input rounded-xl px-4 sm:px-5 py-3 sm:py-3.5 text-sm text-white focus:outline-none resize-none"></textarea>
+                </div>
+
+                <div id="node-submit" class="form-node pt-6 sm:pt-8 text-center">
+                    <button id="submitBtn" type="submit" class="relative group w-full sm:w-auto px-8 sm:px-10 py-3.5 sm:py-4 rounded-xl bg-gradient-to-r from-orange-600 to-orange-500 text-white text-xs font-bold uppercase tracking-widest overflow-hidden transition-all shadow-xl shadow-orange-600/10 active:scale-98 flex items-center justify-center gap-3 mx-auto">
+                        <span id="btnText" class="transition-all duration-300">Submit Message</span>
+                        <div id="planeWrapper" class="relative w-4 h-4 flex items-center justify-center">
+                            <svg id="planeIcon" class="w-4 h-4 transform rotate-45 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/>
+                            </svg>
+                        </div>
+                    </button>
+                </div>
+            </form>
+
+            <div id="response-message-box" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 opacity-0 pointer-events-none transition-opacity duration-300">
+                <div class="glass-card max-w-sm w-full p-6 text-center space-y-4 rounded-2xl border border-white/10 mx-2">
+                    <div class="w-12 h-12 rounded-full bg-orange-500/10 text-orange-500 flex items-center justify-center mx-auto border border-orange-500/20">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    </div>
+                    <p id="response-message-text" class="text-sm font-medium text-gray-300 leading-relaxed"></p>
+                    <button class="px-5 py-2 rounded-xl bg-white/5 border border-white/10 text-white font-bold text-[10px] tracking-wider uppercase hover:bg-white/10" onclick="hideMessageBox()">Acknowledge Window</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="border-t border-white/5 relative bg-slate-950/60 backdrop-blur-xl z-20 text-center py-10 sm:py-12 px-4 space-y-6 sm:space-y-8 overflow-hidden w-full">
+        <canvas id="matrixCanvas"></canvas>
+
+        <div class="relative z-10 max-w-7xl mx-auto space-y-6">
+            <div class="flex justify-center items-center">
+                <h2 id="glitchTitle" class="matrix-glitch-text text-2xl sm:text-5xl font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-400 to-gray-200 uppercase" data-text="PRAIXTECH">
+                    PRAIXTECH
+                </h2>
+            </div>
+
+            <p class="text-[10px] sm:text-xs text-gray-500 font-mono tracking-wide">&copy; 2026 Praise Oladokun. All rights reserved.</p>
+            
+            <ul class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 max-w-md mx-auto px-2">
+                <li><a href="https://x.com/Olaps9?t=cQGn4aVgZ8JSkmf0m3XoQ&s=01" target="_blank" aria-label="Twitter" class="w-9 h-9 rounded-xl glass-card flex items-center justify-center p-2.5 opacity-50 hover:opacity-100 hover:border-orange-500/40 hover:scale-105 transition-all"><img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.2.0/twitter.svg" alt="" class="filter invert"></a></li>
+                <li><a href="https://www.facebook.com/praise.oladokun" target="_blank" aria-label="Facebook" class="w-9 h-9 rounded-xl glass-card flex items-center justify-center p-2.5 opacity-50 hover:opacity-100 hover:border-orange-500/40 hover:scale-105 transition-all"><img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.2.0/facebook.svg" alt="" class="filter invert"></a></li>
+                <li><a href="https://instagram.com/praixtech?igsh=YzljYTK10Dg3Zg==" target="_blank" aria-label="Instagram" class="w-9 h-9 rounded-xl glass-card flex items-center justify-center p-2.5 opacity-50 hover:opacity-100 hover:border-orange-500/40 hover:scale-105 transition-all"><img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.2.0/instagram.svg" alt="" class="filter invert"></a></li>
+                <li><a href="https://linkedin.com/in/praise-oladokun-a929302b1" target="_blank" aria-label="LinkedIn" class="w-9 h-9 rounded-xl glass-card flex items-center justify-center p-2.5 opacity-50 hover:opacity-100 hover:border-orange-500/40 hover:scale-105 transition-all"><img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.2.0/linkedin.svg" alt="" class="filter invert"></a></li>
+                <li><a href="https://github.com/Praiz22" target="_blank" aria-label="GitHub" class="w-9 h-9 rounded-xl glass-card flex items-center justify-center p-2.5 opacity-50 hover:opacity-100 hover:border-orange-500/40 hover:scale-105 transition-all"><img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.2.0/github.svg" alt="" class="filter invert"></a></li>
+                <li><a href="https://www.behance.net/praiseoladokun" target="_blank" aria-label="Behance" class="w-9 h-9 rounded-xl glass-card flex items-center justify-center p-2.5 opacity-50 hover:opacity-100 hover:border-orange-500/40 hover:scale-105 transition-all"><img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.2.0/behance.svg" alt="" class="filter invert"></a></li>
             </ul>
-          </div>
-        </div>
-        <div class="col-md-6" data-aos="fade-left">
-          <div class="glass-card work-card">
-            <h4>Work Experience</h4>
-            <ul>
-              <li>
-                <div class="card-body">
-                  <p><strong>Latter Glory Academy</strong></p>
-                  <p>Senior Product Designer</p>
-                  <p>2020-2024</p>
-                </div>
-              </li>
-              <li>
-                <div class="card-body">
-                  <p><strong>Tech at Last</strong></p>
-                  <p>Product Designer</p>
-                  <p>2023-2024</p>
-                </div>
-              </li>
-              <li>
-                <div class="card-body">
-                  <p><strong>Next Switch Academy</strong></p>
-                  <p>Web and Graphic Designer</p>
-                  <p>2024-2024</p>
-                </div>
-              </li>
+
+            <ul class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-[10px] sm:text-[11px] font-mono tracking-wider text-gray-400">
+                <li><a href="tel:+2349045048954" class="hover:text-orange-400 transition-colors">TELEPHONE</a></li>
+                <li><a href="https://wa.me/2349045048954" target="_blank" class="hover:text-orange-400 transition-colors">WHATSAPP</a></li>
+                <li><a href="mailto:praiseola22@gmail.com" class="hover:text-orange-400 transition-colors">EMAIL</a></li>
             </ul>
-          </div>
+            <p class="pt-2"><a href="https://praixtech.netlify.app" target="_blank" class="text-[10px] sm:text-xs bg-orange-500/10 hover:bg-orange-500/20 text-orange-400 px-4 sm:px-5 py-2.5 rounded-xl border border-orange-500/20 font-bold tracking-wider uppercase transition-all inline-block">Visit Live Network Hub &rarr;</a></p>
         </div>
-      </div>
+    </footer>
+
+    <div id="projectModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 opacity-0 pointer-events-none transition-opacity duration-300 overflow-y-auto">
+        <div class="glass-card max-w-2xl w-full rounded-2xl overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300 relative my-auto border border-white/10 mx-2">
+            <button id="closeModal" aria-label="Close modal" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-black/60 text-gray-400 hover:text-white flex items-center justify-center border border-white/10 backdrop-blur-sm transition-transform active:scale-90"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+            <div id="modalContent" class="p-5 sm:p-10 space-y-6"></div>
+        </div>
     </div>
-  </section>
 
-  <!-- Projects Section -->
-  <!-- Section showcasing recent projects with detailed modals -->
-  <section class="section" id="projects">
-    <div class="container">
-      <h2 class="section-title" data-aos="fade-down">My Latest Projects</h2>
-      <p class="section-subtitle" data-aos="fade-up">Here are some of the projects I have recently
-        worked on.</p>
-
-      <div class="project-section" data-aos="fade-up">
-        <div class="row project-item glassmorphism">
-          <div class="col-md-6">
-            <div class="project-image-container">
-              <img src="rosco-1.png" alt="Project Image">
-            </div>
-          </div>
-          <div class="col-md-6 project-details">
-            <h4>Rosco Autos Solution</h4>
-            <p>A web application designed for Autos cars with user-friendly features and modern UI.</p>
-            <button class="btn btn-primary interactive-button" data-toggle="modal"
-              data-target="#projectModal">View Details</button>
-            <a href="https://github.com/Praiz22" target="_blank" class="icon-link github-icon">
-              <i class="fab fa-github service-icon"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-section" data-aos="fade-up" data-aos-delay="100">
-        <div class="row project-item glassmorphism">
-          <div class="col-md-6">
-            <div class="project-image-container">
-              <img src="creative-design.png" alt="Project Image">
-            </div>
-          </div>
-          <div class="col-md-6 project-details">
-            <h4>My Recent Graphic Designs</h4>
-            <p>Take a look at my most-recent various design for my esteemed clients</p>
-            <button class="btn btn-primary interactive-button" data-toggle="modal"
-              data-target="#graphicModal">View Details</button>
-            <a href="https://github.com/Praiz22" target="_blank" class="icon-link github-icon">
-              <i class="fab fa-github service-icon"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-section" data-aos="fade-up" data-aos-delay="200">
-        <div class="row project-item glassmorphism">
-          <div class="col-md-6">
-            <div class="project-image-container">
-              <img src="photosec-1.png" alt="Project Image">
-            </div>
-          </div>
-          <div class="col-md-6 project-details">
-            <h4>Photosec - A Photo Studio</h4>
-            <p>An online Portfolio of photosec company featuring, clean and modern design, designed with user
-              experience in mind.</p>
-            <button class="btn btn-primary interactive-button" data-toggle="modal"
-              data-target="#photosec">View Details</button>
-            <a href="https://github.com/Praiz22" target="_blank" class="icon-link github-icon">
-              <i class="fab fa-github service-icon"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-section" data-aos="fade-up" data-aos-delay="300">
-        <div class="row project-item glassmorphism">
-          <div class="col-md-6">
-            <div class="project-image-container">
-              <img src="welldone.png" alt="Project Image">
-            </div>
-          </div>
-          <div class="col-md-6 project-details">
-            <h4>Other Web-Projects</h4>
-            <p>here is a snippet of some of a job well-done</p>
-            <button class="btn btn-primary interactive-button" data-toggle="modal"
-              data-target="#welldone">View Details</button>
-            <a href="https://github.com/Praiz22" target="_blank" class="icon-link github-icon">
-              <i class="fab fa-github service-icon"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-  </section>
-
-  <!-- Project Modals (with glassmorphism and animations) -->
-  <!-- Modals for Rosco Autos Solution, Graphic Designs, Photosec, and Other Web-Projects -->
-  <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content glassmorphism animated-modal">
-        <div class="modal-header">
-          <h5 class="modal-title" id="projectModalLabel">Project Details</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div id="projectImages" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#projectImages" data-slide-to="0" class="active"></li>
-              <li data-target="#projectImages" data-slide-to="1"></li>
-              <li data-target="#projectImages" data-slide-to="2"></li>
-              <li data-target="#projectImages" data-slide-to="3"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="rosco-1.png" alt="praix-tech" class="d-block w-100">
-              </div>
-              <div class="carousel-item">
-                <img src="rosco-2.png" alt="praix-tech" class="d-block w-100">
-              </div>
-              <div class="carousel-item">
-                <img src="rosco-4.png" alt="praix-tech" class="d-block w-100">
-              </div>
-              <div class="carousel-item">
-                <img src="ROSCO-3.png" alt="praix-tech" class="d-block w-100">
-              </div>
-            </div>
-            <a class="carousel-control-prev" href="#projectImages" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#projectImages" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary interactive-button" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="graphicModal" tabindex="-1" role="dialog" aria-labelledby="graphicModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content glassmorphism animated-modal">
-        <div class="modal-header">
-          <h5 class="modal-title" id="graphicModalLabel">Graphic Design Details</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div id="graphicImages" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#graphicImages" data-slide-to="0" class="active"></li>
-              <li data-target="#graphicImages" data-slide-to="1"></li>
-              <li data-target="#graphicImages" data-slide-to="2"></li>
-              <li data-target="#graphicImages" data-slide-to="3"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="design-5.png" alt="Graphic Design 1" class="d-block w-100">
-              </div>
-              <div class="carousel-item">
-                <img src="design-2.png" alt="Graphic Design 2" class="d-block w-100">
-              </div>
-              <div class="carousel-item">
-                <img src="design-4.png" alt="Graphic Design 3" class="d-block w-100">
-              </div>
-              <div class="carousel-item">
-                <img src="design-1.png" alt="Graphic Design 4" class="d-block w-100">
-              </div>
-            </div>
-            <a class="carousel-control-prev" href="#graphicImages" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#graphicImages" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-          <div class="text-center mt-3">
-            <a href="total.png" class="btn btn-secondary interactive-button" target="_blank">View All</a>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary interactive-button" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="photosec" tabindex="-1" role="dialog" aria-labelledby="photosecLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content glassmorphism animated-modal">
-        <div class="modal-header">
-          <h5 class="modal-title" id="photosecLabel">Photosec Project Details</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div id="photography" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#photography" data-slide-to="0" class="active"></li>
-              <li data-target="#photography" data-slide-to="1"></li>
-              <li data-target="#photography" data-slide-to="2"></li>
-              <li data-target="#photography" data-slide-to="3"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="photosec-1.png" alt="Photosec 1" class="d-block w-100">
-              </div>
-              <div class="carousel-item">
-                <img src="photosec-2.png" alt="Photosec 2" class="d-block w-100">
-              </div>
-              <div class="carousel-item">
-                <img src="photosec-4.png" alt="Photosec 3" class="d-block w-100">
-              </div>
-              <div class="carousel-item">
-                <img src="photosec-5.png" alt="Photosec 4" class="d-block w-100">
-              </div>
-            </div>
-            <a class="carousel-control-prev" href="#photography" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#photography" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary interactive-button" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="welldone" tabindex="-1" role="dialog" aria-labelledby="welldoneLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content glassmorphism animated-modal">
-        <div class="modal-header">
-          <h5 class="modal-title" id="welldoneLabel">Other Web-Projects Details</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div id="programmer" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#programmer" data-slide-to="0" class="active"></li>
-              <li data-target="#programmer" data-slide-to="1"></li>
-              <li data-target="#programmer" data-slide-to="2"></li>
-              <li data-target="#programmer" data-slide-to="3"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="troweld.png" alt="Web Project 1" class="d-block w-100">
-              </div>
-              <div class="carousel-item">
-                <img src="troweld-2.png" alt="Web Project 2" class="d-block w-100">
-              </div>
-              <div class="carousel-item">
-                <img src="inance-1.png" alt="Web Project 3" class="d-block w-100">
-              </div>
-              <div class="carousel-item">
-                <img src="inance-2.png" alt="Web Project 4" class="d-block w-100">
-              </div>
-            </div>
-            <a class="carousel-control-prev" href="#programmer" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#programmer" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary interactive-button" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Testimonials Section -->
-  <!-- Carousel for client testimonials -->
-  <section id="testimonials" class="section">
-    <div class="container">
-      <h2 class="section-title" data-aos="fade-down">What My Clients Say</h2>
-      <p class="section-subtitle" data-aos="fade-up">Don't just take my word for it. Hear from my satisfied clients who have experienced my
-        exceptional service.</p>
-      <div class="testimonials-carousel glassmorphism" data-aos="zoom-in">
-        <div id="carouselExample" class="carousel slide" data-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <div class="testimonial-card">
-                <img src="lga.png" alt="Testimonial 1" class="testimonial-img">
-                <h4>Latter Glory Academy</h4>
-                <p>"Working with Praix was an absolute pleasure. Their expertise in graphic design and web development
-                  brought our vision to life. The final product exceeded our expectations and was delivered on time. We
-                  couldn't be happier with the results!"</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="testimonial-card">
-                <img src="love.png" alt="Testimonial 2" class="testimonial-img">
-                <h4>Kostbar Ventures</h4>
-                <p>"Praise is a pleasure to work with. He's responsive, reliable, and always willing to go the extra
-                  mile to ensure our project's success. His web development skills are top-notch, and I look forward to
-                  collaborating with him again in the future."</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="testimonial-card">
-                <img src="obonyx.png" alt="Testimonial 3" class="testimonial-img">
-                <h4>Tech at last</h4>
-                <p>"Praise's expertise in UI/UX design has been instrumental in transforming our company's online
-                  presence.
-                  Thank you praiX,"</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <div class="testimonial-card">
-                <img src="k.jpg" alt="Testimonial 4" class="testimonial-img">
-                <h4>MMCM Ogbomoso</h4>
-                <p>"We are thrilled with the new look of our website. Praix did a fantastic job capturing our brand’s
-                  essence and translating it into a visually appealing design. The website’s performance and
-                  functionality have greatly improved. Thank you, Praix!"</p>
-              </div>
-            </div>
-          </div>
-          <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <!-- Form for clients to get in touch -->
-  <section class="section" id="contact">
-    <div class="container">
-      <h2 class="section-title" data-aos="fade-down">Contact Me</h2>
-      <p class="section-subtitle" data-aos="fade-up">Get in touch to discuss your project or just say
-        hello!</p>
-      <form id="contact-form" action="https://formsubmit.co/praiseola22@gmail.com" method="POST" class="glassmorphism" data-aos="fade-up" data-aos-delay="200">
-        <input type="hidden" name="_captcha" value="false">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="phone">Phone:</label>
-        <input type="tel" id="phone" name="phone">
-
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
-        <button class="btn btn-primary interactive-button" type="submit">
-          Send Message</button>
-      </form>
-      <!-- Custom message box for form submission feedback (replaces alert) -->
-      <div id="response-message-box" class="message-box">
-        <div class="message-box-content">
-          <p id="response-message-text"></p>
-          <button class="btn btn-primary" onclick="hideMessageBox()">Close</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <!-- Footer section with copyright and social media links -->
-  <footer>
-    <p>&copy; 2024 Praix Oladokun. All rights reserved.</p>
-    <ul class="social-media">
-      <li><a href="https://x.com/Olaps9?t=cQGn4aVgZ8JSkmf0m3XoQ&s=01" target="_blank" title="Twitter" class="social-icon-link">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.2.0/twitter.svg" alt="Twitter Icon">
-        </a></li>
-      <li><a href="https://www.facebook.com/praise.oladokun" target="_blank" title="Facebook" class="social-icon-link">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.2.0/facebook.svg" alt="Facebook Icon">
-        </a></li>
-      <li><a href="https://instagram.com/praixtech?igsh=YzljYTK10Dg3Zg==" target="_blank" title="Instagram" class="social-icon-link">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.2.0/instagram.svg" alt="Instagram Icon">
-        </a></li>
-      <li><a
-          href="https://linkedin.com/in/praise-oladokun-a929302b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
-          target="_blank" title="LinkedIn" class="social-icon-link">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.2.0/linkedin.svg" alt="LinkedIn Icon">
-        </a></li>
-      <li><a href="https://github.com/Praiz22" target="_blank" title="GitHub" class="social-icon-link">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.2.0/github.svg" alt="GitHub Icon">
-        </a></li>
-      <li><a href="https://www.behance.net/praiseoladokun" target="_blank" title="Behance" class="social-icon-link">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.2.0/behance.svg" alt="Behance Icon">
-        </a></li>
-    </ul>
-    <ul class="social-media contact-media">
-      <li>
-        <a href="tel:+2349045048954" target="_blank" title="Phone" class="social-icon-link">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-            <path
-              d="M6.62 10.79a15.62 15.62 0 0 0 5.53 5.53l2.8-2.8a1 1 0 0 1 1.14-.28c.37.15.7.36.98.64l1.48 1.48c.36.36.56-.85.56-1.36s-.2 1-.56 1.36l-2.33 2.33a1.61 1.61 0 0 1-2.26 0l-1.48-1.48a1 1 0 0 1-.28-1.14l2.8-2.8a15.62 15.62 0 0 0-5.53-5.53l-2.8 2.8a1 1 0 0 1-1.14.28c-.37-.15-.7-.36-.98-.64l-1.48-1.48c-.36-.36-.56-.85-.56-1.36s.2-1 .56-1.36l2.33-2.33a1.61 1.61 0 0 1 2.26 0l1.48 1.48a1 1 0 0 1 .28 1.14l-2.8 2.8zm5.9 6.36c-2.56 0-5.02-.75-7.1-2.08a1.52 1.52 0 0 1-.69-1.83l.64-2.64a1.5 1.5 0 0 1 1.83-.69c1.61.95 3.35 1.5 5.32 1.5s3.71-.55 5.32-1.5a1.5 1.5 0 0 1 1.83.69l.64 2.64a1.52 1.52 0 0 1-.69 1.83c-2.08 1.33-4.54 2.08-7.1 2.08z" />
-          </svg>
-        </a>
-      </li>
-      <li><a href="https://wa.me/09045048954" target="_blank" title="WhatsApp" class="social-icon-link">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.2.0/whatsapp.svg" alt="WhatsApp icon">
-        </a></li>
-      <li><a href="mailto:praiseola22@gmail.com" target="_blank" title="Mail Me" class="social-icon-link">
-          <img src="https://cdnjs.cloudflare.com/ajax/libs/simple-icons/6.2.0/gmail.svg" alt="Gmail icon">
-        </a></li>
-    </ul>
-    <p><a href="https://praixtech.netlify.app" target="_blank" title="Visit My Main Website"
-        class="main-website-link">Visit My Main Website</a>
-    </p>
-  </footer>
-
-  <!-- Bootstrap JS from CDN -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <!-- Animate On Scroll (AOS) JS -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <!-- Custom JS file -->
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
-
 </html>
