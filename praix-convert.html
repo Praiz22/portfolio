@@ -8,6 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/dist/index.js"></script>
+
 <style>
 *{
     margin:0;
@@ -275,6 +277,9 @@ input[type="range"]::-webkit-slider-runnable-track {
     object-fit: contain;
     aspect-ratio: 4/3;
     background: #09090b;
+    background-image: linear-gradient(45deg, #111 25%, transparent 25%), linear-gradient(-45deg, #111 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #111 75%), linear-gradient(-45deg, transparent 75%, #111 75%);
+    background-size: 16px 16px;
+    background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
     border: 1px solid #18181b;
 }
 
@@ -420,6 +425,15 @@ button.secondary:hover {
     margin-bottom: 8px;
 }
 
+.ai-status-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--matrix-green);
+    text-transform: uppercase;
+    text-align: center;
+    margin-top: 4px;
+}
+
 @keyframes shimmer {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
@@ -434,7 +448,7 @@ button.secondary:hover {
 
 <header>
     <h1>Praix Image Studio // Blackbox</h1>
-    <p>System status: Active // Core Engine v3.2 // Quantum UI Pipeline Engaged</p>
+    <p>System status: Active // Core Engine v3.5 // On-Device Neural Vision Model Enabled</p>
 </header>
 
 <div class="dropzone" id="dropzone">
@@ -445,19 +459,19 @@ button.secondary:hover {
 <div class="controls">
     <div class="card">
         <label>Output Format</label>
-        <select id="format">
-            <option value="image/jpeg">JPG</option>
-            <option value="image/png">PNG</option>
-            <option value="image/webp">WEBP</option>
+        <select id="format" onchange="checkFormatDependency()">
+            <option value="image/png">PNG (Supports Transparency)</option>
+            <option value="image/webp">WEBP (Supports Transparency)</option>
+            <option value="image/jpeg">JPG (No Background Alpha)</option>
             <option value="image/avif">AVIF</option>
         </select>
     </div>
 
     <div class="card">
-        <label>Aspect Logic</label>
-        <select id="aspectLogic">
-            <option value="scale">Percent Scale</option>
-            <option value="contain">Fit Box (Letterbox)</option>
+        <label>Neural Isolation Pipeline</label>
+        <select id="bgRemovalMode" onchange="checkFormatDependency()">
+            <option value="preserve">Keep Original Background</option>
+            <option value="remove">Remove Background (Alpha Cutout)</option>
         </select>
     </div>
 
@@ -473,7 +487,7 @@ button.secondary:hover {
 
     <div class="card">
         <label>Target Quality</label>
-        <input type="range" id="quality" min="0.1" max="1" step="0.05" value="0.8">
+        <input type="range" id="quality" min="0.1" max="1" step="0.05" value="0.95">
     </div>
 
     <div class="card" style="display: flex; align-items: center;">
@@ -515,6 +529,15 @@ document.querySelectorAll('input[type="range"]').forEach(input => {
     input.addEventListener('input', updateSliderTracks);
 });
 updateSliderTracks();
+
+function checkFormatDependency() {
+    const bgRemovalMode = document.getElementById('bgRemovalMode').value;
+    const formatSelect = document.getElementById('format');
+    
+    if (bgRemovalMode === 'remove' && formatSelect.value === 'image/jpeg') {
+        formatSelect.value = 'image/png';
+    }
+}
 
 // Generate Antigravity Particle Starfield
 const bgParticles = document.getElementById('bgParticles');
@@ -586,72 +609,107 @@ async function processImages(){
     let format = document.getElementById('format').value;
     let quality = parseFloat(document.getElementById('quality').value);
     let scaleVal = parseInt(document.getElementById('resize').value);
-    let aspectLogic = document.getElementById('aspectLogic').value;
+    let bgRemovalMode = document.getElementById('bgRemovalMode').value;
     let template = document.getElementById('nameTemplate').value || "[name]";
     let stripMeta = document.getElementById('stripMetadata').checked;
 
     convertBtn.disabled = true;
-    convertBtn.innerHTML = `<div class="spinner"></div> Executing (${0}%)`;
+    convertBtn.innerHTML = `<div class="spinner"></div> Init AI Neural Engine...`;
 
     files.forEach((file, index) => {
         const card = document.getElementById(`card-${index}`);
         if(card) {
-            card.innerHTML = `<div class="skeleton-img"></div><div style="padding-top:4px;"><div class="skeleton-text" style="width:75%;"></div><div class="skeleton-text" style="width:45%;"></div></div>`;
+            card.innerHTML = `
+                <div class="skeleton-img"></div>
+                <div style="padding-top:4px;">
+                    <div class="skeleton-text" style="width:75%;"></div>
+                    <div class="skeleton-text" style="width:45%;"></div>
+                    <div class="ai-status-text" id="status-text-${index}">Booting Neural Vision Grid...</div>
+                </div>`;
         }
     });
 
     const processingPromises = files.map((file, index) => {
-        return new Promise((resolve) => {
-            const img = new Image();
-            img.src = URL.createObjectURL(file);
+        return new Promise(async (resolve) => {
+            try {
+                let activeSourceEffect = file;
+                const statusLabel = document.getElementById(`status-text-${index}`);
 
-            img.onload = () => {
-                const canvas = document.createElement('canvas');
-                const ctx = canvas.getContext('2d');
-                
-                let targetWidth, targetHeight;
+                if (bgRemovalMode === 'remove') {
+                    if (statusLabel) statusLabel.innerText = "Extracting Alpha Layer...";
+                    
+                    // Fallback proof explicit namespace calling
+                    if (typeof imgly === 'undefined' || !imgly.backgroundRemoval) {
+                        throw new Error("Library namespace initialization failed. Server context mandatory.");
+                    }
 
-                if (aspectLogic === 'contain') {
-                    const baseBox = scaleVal * 16; 
-                    let ratio = Math.min(baseBox / img.width, baseBox / img.height, 1);
-                    targetWidth = img.width * ratio;
-                    targetHeight = img.height * ratio;
-                } else {
-                    targetWidth = img.width * (scaleVal / 100);
-                    targetHeight = img.height * (scaleVal / 100);
+                    const isolatedBlob = await imgly.backgroundRemoval(file, {
+                        progress: (step, current, total) => {
+                            if (statusLabel) {
+                                const percentage = Math.round((current / total) * 100) || 0;
+                                statusLabel.innerText = `${step.replace(/([A-Z])/g, ' $1')}: ${percentage}%`;
+                            }
+                        }
+                    });
+                    activeSourceEffect = isolatedBlob;
                 }
 
-                canvas.width = targetWidth;
-                canvas.height = targetHeight;
-                ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+                if (statusLabel) statusLabel.innerText = "Scaling Graphics Pipeline...";
 
-                canvas.toBlob(blob => {
-                    URL.revokeObjectURL(img.src);
-                    
-                    const outputBlob = stripMeta ? new Blob([blob], {type: format}) : blob;
-                    const url = URL.createObjectURL(outputBlob);
-                    
-                    const origBaseName = file.name.substring(0, file.name.lastIndexOf('.')) || file.name;
-                    const formattedName = template.replace('[name]', origBaseName);
-                    
-                    const resultItem = {
-                        name: formattedName,
-                        blob: outputBlob,
-                        url,
-                        size: outputBlob.size,
-                        width: Math.round(targetWidth),
-                        height: Math.round(targetHeight),
-                        targetExtension: extensionMap[format]
-                    };
-                    
-                    results[index] = resultItem;
-                    processedCount++;
-                    convertBtn.innerHTML = `<div class="spinner"></div> Executing (${Math.round((processedCount / totalFiles) * 100)}%)`;
+                const img = new Image();
+                img.src = URL.createObjectURL(activeSourceEffect);
 
-                    renderSingleResult(index, resultItem);
-                    resolve();
-                }, format, quality);
-            };
+                img.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    
+                    let targetWidth = img.width * (scaleVal / 100);
+                    let targetHeight = img.height * (scaleVal / 100);
+
+                    canvas.width = targetWidth;
+                    canvas.height = targetHeight;
+                    
+                    ctx.clearRect(0, 0, targetWidth, targetHeight);
+                    ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
+
+                    canvas.toBlob(blob => {
+                        URL.revokeObjectURL(img.src);
+                        if (activeSourceEffect !== file) {
+                            URL.revokeObjectURL(activeSourceEffect);
+                        }
+                        
+                        const outputBlob = stripMeta ? new Blob([blob], {type: format}) : blob;
+                        const url = URL.createObjectURL(outputBlob);
+                        
+                        const origBaseName = file.name.substring(0, file.name.lastIndexOf('.')) || file.name;
+                        const formattedName = template.replace('[name]', origBaseName);
+                        
+                        const resultItem = {
+                            name: formattedName,
+                            blob: outputBlob,
+                            url,
+                            size: outputBlob.size,
+                            width: Math.round(targetWidth),
+                            height: Math.round(targetHeight),
+                            targetExtension: extensionMap[format]
+                        };
+                        
+                        results[index] = resultItem;
+                        processedCount++;
+                        convertBtn.innerHTML = `<div class="spinner"></div> Executing (${Math.round((processedCount / totalFiles) * 100)}%)`;
+
+                        renderSingleResult(index, resultItem);
+                        resolve();
+                    }, format, quality);
+                };
+            } catch (err) {
+                console.error("Pipeline failure on asset index " + index, err);
+                const card = document.getElementById(`card-${index}`);
+                if (card) {
+                    card.innerHTML = `<div class="stats" style="color:#ef4444; font-size:0.7rem; line-height:1.4;"><strong>Pipeline Error:</strong> Local process blocked.<br>Ensure you are serving this file from localhost (Live Server) and not file:///</div>`;
+                }
+                resolve();
+            }
         });
     });
 
@@ -662,7 +720,7 @@ async function processImages(){
 
 function renderSingleResult(index, item) {
     const card = document.getElementById(`card-${index}`);
-    if (!card) return;
+    if (!card || !item) return;
 
     const outExt = item.targetExtension.toUpperCase();
 
